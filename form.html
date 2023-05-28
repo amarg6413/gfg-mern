@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Login Form</h1>
+    <form action="/submituserdata" method="post" target="_blank" autocomplete="on">
+        <fieldset>
+            <legend>Login</legend>
+            <input type="email" name="email" placeholder="Enter you email" list="myList" required>
+            <datalist id="myList">
+                <option value="name1"></option>
+                <option value="name2"></option>
+                <option value="name3"></option>
+            </datalist>
+            <input type="password" name="pwd" placeholder="Enter Password" required>
+            <br>
+            <label> What is your age?</label>
+            <select name="userage" size="1">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+            </select>
+            <br>
+
+            <textarea name="message" rows="10" cols="50" placeholder="Hello" style="max-width: 300px"></textarea>
+            <br>
+            <input type="submit" value="Login">
+            <button type="button" onclick="alert('Hey There')"">Don't Click</button>
+        </fieldset>
+    </form>
+</body>
+
+</html>

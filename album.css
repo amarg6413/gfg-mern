@@ -1,0 +1,51 @@
+.logo{
+    background-color: black;
+    padding: 20px;
+}
+
+.logoLabel{
+    color: white;
+}
+
+ul{
+    text-decoration: none;
+    display: inline-block;
+    float: right;
+}
+
+li{
+    color: white;
+    display: inline;
+}
+
+.albumExample{
+    text-align: center;
+    padding: 50px;
+}
+
+.row{
+    width: 100%;
+    margin: 10px;
+}
+
+.card{
+    border: 1px solid black;
+    display: inline-block;
+    width: 30%;
+    padding: 0px 0px 10px 0px;
+}
+
+.thumbnail{
+    width: 100%;
+}
+
+.thumbnails{
+    text-align: center;
+    margin: 10px;
+}
+
+
+footer{
+    background-color: lightgray;
+    padding: 20px;
+}
