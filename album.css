@@ -1,3 +1,6 @@
+body{
+    margin: 0px;
+}
 .logo{
     background-color: black;
     padding: 20px;
@@ -49,3 +52,32 @@ footer{
     background-color: lightgray;
     padding: 20px;
 }
+/* 
+.bar_icon{
+    display: none;
+    color: white;
+}
+
+@media screen and (max-width: 500px) {
+    body {
+        background-color: red;
+    }
+
+    .bar_icon {
+        display: block;
+        float: right;
+    }
+
+    .bar_icon + ul li{
+        display: block;
+        background-color: grey;
+    }
+
+    .bar_icon + li {
+        color: red !important;
+    }
+
+    ul li {
+        display: none;
+    }
+} */
