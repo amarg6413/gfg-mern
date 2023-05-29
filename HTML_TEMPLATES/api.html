@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #container{
+        width: 350px;
+        height: 350px;
+        padding: 10px;
+        border: 1px solid black;
+    }
+</style>
+<body>
+    <button onclick="getUserLocation()">Get Geo Location</button>
+    <div id="location"></div>
+    <br>
+    <div id="container" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+    <img id="myimage" src="../resources/logo.png" alt="image" draggable="true" width="250" height="250"
+    ondragstart="drag(event)">
+    <br>
+    <input type="file" id="fileInput" onchange="displayFileData()"/>
+    <div id="output"></div>
+</body>
+<script>
+    function getUserLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            document.getElementById("location").innerHTML = "Geo Location is not supported by the browser.";
+        }
+    }
+
+    function showPosition(position) {
+        document.getElementById("location").innerHTML = "Latitude is:- "+position.coords.latitude+"<br> Longitude is:- "+position.coords.longitude;
+    }
+
+    function showError(error) {
+        document.getElementById("location").innerHTML = "Error: " + error.message;
+    }
+
+    function allowDrop(e){
+        e.preventDefault();
+    }
+    function drag(e){
+        console.log(e.target.id)
+        e.dataTransfer.setData("myImageToTransfer",e.target.id)
+    }
+
+    function drop(e){
+        e.preventDefault();
+        var data= e.dataTransfer.getData("myImageToTransfer")
+        e.target.appendChild(document.getElementById(data))
+    }
+
+    function displayFileData(){
+        var fileInput = document.getElementById("fileInput")
+        console.log(fileInput.files[0]);
+        var fileData = fileInput.files[0];
+        var output = document.getElementById("output")
+        output.innerHTML = 
+        "File Name :- "+ fileData.name +"<br>"+
+        "File Type :- "+fileData.type+
+        "File Size :- "+fileData.size;
+    }
+</script>
+</html>

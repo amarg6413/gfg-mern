@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage</title>
+</head>
+<body>
+    <form onsubmit="event.preventDefault(); addProductToCart()">
+        <input type="text" placeholder="Enter product name" id="productName" required>
+        <input type="number" placeholder="Enter product prize" id="productPrize" required>
+        <button type="submit">Add To Cart</button>
+    </form>
+    <div id="output"></div>
+
+    <script>
+        function showCart() {
+            let cart = localStorage.getItem("cart");
+            console.log("Cart Items:- ", cart);
+            let output = document.getElementById("output");
+            cart = JSON.parse(cart);
+            if (cart == null) {
+                output.innerHTML = "No items added to the cart";
+            } else {
+                let table = "<table border='1'>";
+                table += "<tr><th>Product Name</th><th>Product Prize</th></tr>";
+
+                for (let i = 0; i < cart.length; i++) {
+                    table += "<tr><td>" + cart[i].name + "</td><td>" + cart[i].prize + "</td></tr>";
+                }
+
+                table += "</table>";
+                output.innerHTML = table;
+            }
+        }
+
+        function addProductToCart() {
+            console.log("Hello");
+            let cart = localStorage.getItem("cart");
+            if (cart == null) {
+                cart = [];
+            } else {
+                cart = JSON.parse(cart);
+            }
+
+            let productName = document.getElementById("productName").value;
+            let productPrize = document.getElementById("productPrize").value;
+
+            let product = {
+                name: productName,
+                prize: productPrize
+            };
+
+            cart.push(product);
+            document.getElementById("productName").value = "";
+            document.getElementById("productPrize").value = "";
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            showCart();
+        }
+
+
+        showCart();
+    </script>
+</body>
+</html>

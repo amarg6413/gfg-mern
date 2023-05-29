@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body{
+        background-color: #333;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    canvas{
+        border: 5px;
+        background-color: white; 
+        /* height: 80%; */
+    }
+
+</style>
+<body>
+
+    <canvas id="canvas" width="800px" height="800px"></canvas>
+</body>
+<script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext('2d'); 
+    canvas.width= window.innerWidth - 100;
+
+    ctx.beginPath();
+    ctx.arc(300,300,200,0,Math.PI*2);
+    ctx.fillStyle = "yellow";
+    ctx.fill()
+    ctx.strokeStlpe = "black";
+    ctx.stroke();
+
+
+    ctx.beginPath();
+    ctx.arc(220,220,30,0,Math.PI*2);
+    ctx.fillStyle = "black";
+    ctx.fill()
+    ctx.strokeStlpe = "black";
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(370,220,30,0,Math.PI*2);
+    ctx.fillStyle = "black";
+    ctx.fill()
+    ctx.strokeStlpe = "black";
+    ctx.stroke();
+
+
+    ctx.beginPath();
+    ctx.arc(300,350,70,0 ,Math.PI);
+    ctx.fillStyle = "red";
+    ctx.fill()
+    ctx.strokeStlpe = "black";
+    ctx.stroke();
+
+    //Teeth
+    ctx.beginPath()
+    ctx.rect(240,350,25,30)
+    ctx.fillStyle ="white"
+    ctx.strokeStyle = "white"
+    ctx.fill()
+    ctx.stroke();
+
+
+    ctx.beginPath()
+    ctx.rect(270,350,25,30)
+    ctx.fillStyle ="white"
+    ctx.strokeStyle = "white"
+    ctx.fill()
+    ctx.stroke();
+
+
+    ctx.beginPath()
+    ctx.rect(300,350,25,30)
+    ctx.fillStyle ="white"
+    ctx.strokeStyle = "white"
+    ctx.fill()
+    ctx.stroke();
+
+
+    ctx.beginPath()
+    ctx.rect(330,350,25,30)
+    ctx.fillStyle ="white"
+    ctx.strokeStyle = "white"
+    ctx.fill()
+    ctx.stroke();
+
+
+    const circle = {
+        x: 700,
+        y: 300,
+        radius: 40,
+        dx: 5,
+        dy: 4
+    }
+
+    function drawCircle(){
+        ctx.beginPath();
+        ctx.arc(circle.x,circle.y,circle.radius,0,Math.PI*2)
+        ctx.fillStyle = "#0006"
+        ctx.fill()
+    }
+
+    drawCircle()
+
+    function updateCircle(){
+        ctx.clearRect(0,0,canvas.width,canvas.height)
+        drawCircle()
+        circle.x += circle.dx;
+        circle.y +=circle.dy;
+        requestAnimationFrame(updateCircle)
+
+        if(circle.x + circle.radius > canvas.width || circle.x - circle.radius<0){
+            circle.dx *= -1;
+        }
+
+        if(circle.y + circle.radius > canvas.height || circle.y - circle.radius<0){
+            circle.dy *= -1;
+        }
+    }
+
+    updateCircle()
+</script>
+</html>
